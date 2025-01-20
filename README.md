@@ -14,13 +14,28 @@ Nomeamos muitas coisas na programação, e como fazemos muito isso, é bom que f
 ### 🟣 **Nomes que Demonstram seu Propósito**
 
 O nome de uma variável deve dizer tudo sobre ela. Se ele precisa de um comentário, então não é um bom nome.
+```bash
 
+//Ruim
+$n = "Iasmim"; 
+
+//Bom
+$name = "Iasmim";
+```
 
 ### 🟣 **Evitar Informações Erradas**
 
 Deve-se evitar passar dicas falsas que confundam o sentido do código. Por exemplo, usar palavras que possam ser confundidas com o nome de outras coisas. No livro, há o exemplo de palavras que são usadas como nomes de plataformas Unix.
 
 Também devemos ter cuidado ao usar nomes parecidos para duas coisas diferentes, pois fica difícil de distinguir a diferença entre eles. Exemplo: `XYZControllerForEfficientHandlingOfStrings` e `XYZControllerForEfficientStorageOfStrings` são muito semelhantes.
+
+```bash
+//Ruim
+$dtTime = "2025-01-20";
+
+//Bom
+$dateString = "2025-01-20";
+```
 
 
 ### 🟣 **Faça Distinções Significativas**
@@ -29,12 +44,29 @@ Alterar um nome de maneira arbitrária, só porque o nome que você quer usar j�
 
 Usar números sequenciais em nomes não é expressivo o suficiente, pois esse tipo de nome não nos diz nada sobre o que o programa faz.
 
+```bash
+//Ruim
+$product1 = "Livro";
+$product2 = "Caderno";
+
+//Bom
+$book = "Livro";
+$notebook = "Caderno";
+```
 
 ### 🟣 **Use Nomes Pronunciáveis**
 
 Crie nomes pronunciáveis, se não puder pronunciá-lo, será difícil discutí-lo sem parecer um idiota (ele conta uma história sobre isso o livro e eu rachei demais). Isso é importante, porque programação também é uma atividade social.
 
 É importante fazer a distinção de nomes de uma forma que o leitor compreenda a diferença e entenda rapidamente o que aquela variável faz.
+
+```bash
+//Ruim
+$dtStr = "2025-01-20"
+
+//Bom
+$dateString = "2025-01-20";
+```
 
 
 ### 🟣 **Use Nomes Passíveis de Busca**
@@ -43,6 +75,15 @@ Usar nomes pronunciáveis e passíveis de busca, que não sejam confundidos com 
 
 > O tamanho de um nome deve ser proporcional ao tamanho do escopo.
 
+```bash
+//Ruim
+$a = 10;
+$b = 20
+
+//Bom
+$firstNumber = 10;
+$secondNumber = 20
+```
 
 ### 🟣 **Evite Codificações**
 
@@ -59,6 +100,12 @@ Evitar o mapeamento mental, onde o leitor precisa ler todo o código para entend
 ### 🟣 **Nomes de Classes**
 
 Classes e objetos devem ter nome substantivos.
+```bash
+class UserManager
+{
+  //código da classe
+}
+```
 
 
 ### 🟣 **Nomes de Métodos**
@@ -66,6 +113,15 @@ Classes e objetos devem ter nome substantivos.
 Nomes de métodos devem ter verbos (get, post, delete, etc). 
 
 Podemos usar *factory methods* quando os construtores estiverem sobrecarregados com nomes que descrevam os parâmetros. Para forçar o uso, torne os construtores correspondentes como privados.
+```bash
+class UserManager
+{
+  public function getUserData()
+  {
+    //código do método
+  }
+}
+```
 
 
 ### 🟣 **Selecione uma Palavra por Conceito**
@@ -76,6 +132,15 @@ Escolher uma palavra por cada conceito abstrato e permanecer com ela até o fim.
 ### 🟣 **Não Faça Trocadilhos**
 
 Não usar a mesma palavra para 2 propósitos.
+```bash
+//Ruim
+$bankAccount = "123456";
+$riverBank = "Amazon River"
+
+//Bom
+$bankAccountNumber = "123456";
+$riverSide = "Amazon River"
+```
 
 [⬆️Voltar ao Topo](#sumário)
 
@@ -114,7 +179,7 @@ A solução seria usar o `switch` em uma `abstract factory`.
 
 ### 🔵 **Nome da Função**
 
-Usar nomes descritivos para as funções. Nomes extensos são melhores que nomes pequenos e confusos ou um comentário. O nome deve explicar o que ela faz. Importante ser consistente na nomeação das funções do módulo. Por exemplo, usar `add` pra toda função que faz a ação de adicionar algo: `addConvenio`, `addProcesso`, etc.
+Usar nomes descritivos para as funções. Nomes extensos são melhores que nomes pequenos e confusos ou um comentário. O nome deve explicar o que ela faz. Importante ser consistente na nomeação das funções do módulo. Por exemplo, usar `add` pra toda função que faz a ação de adicionar algo: `addConvenio`, `addProcess`, etc.
 
 
 ### 🔵 **Parâmetros**
