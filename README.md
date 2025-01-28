@@ -363,13 +363,12 @@ Linhas de código que estão relacionadas devem aparecer verticalmente unidas (n
                 fclose($is);
             }
         } catch (Exception $e1) {
-            // Handle any secondary exceptions here (optional)
         }
     }
 }
 ```
 
-- Geralmente, devem-se declarar as variáveis de controle para loops dentro da estrutura de iteração.
+- Devem-se declarar as variáveis de controle para loops dentro da estrutura de iteração. Em casos raros, pode-se declarar uma variável  no início de um bloco ou depois de um loop em uma função longa.
 ```bash
 public function countTestCases{
   $count = 0;
@@ -379,4 +378,57 @@ public function countTestCases{
   return $count;
 }
 ```
+- Variáveis de instância: devem ser declaradas no início da classe. Isso não aumenta a distância vertical entre elas pois provavelmente elas são usadas por quase todos os métodos. Muito já se falou sobre onde declará-las, mas o que importa é que elas sejam declaradas em um local bem conhecido, para que todos saibam onde buscar as declarações.
+- Funções dependentes: se uma função chama outra, elas devem ficar verticalmente próximas, e a que chama deve ficar acima da função que vai ser chamada.
+- Afinidade conceitual: quanto maior a afinidade, mais próximos eles devem ficar. Essa afinidade deve-se basear em uma dependência direta (uma função chamando outra, uma função usando uma variável). Um grupo de funções que efetuam operações parecidas também se encaixam aqui.
+
+### Ordenação vertical
+
+De modo geral, é desejável que as chamadas de função apontem para baixo, pois isso cria um fluxo natural no código. Isso nos permite passar os olhos nos arquivos-fonte e obter uma idéia de algumas das primeiras funções, sem ter de mergulhar nos detalhes.
+
+### Formatação horizontal
+
+Não tem um limite ideal, mas devemos nos esforçar para manter as linhas curtas. Ultrapassar 120 caracteres é uma falta de cuidado, apenas.
+
+### Espaçamento e continuidade horizontal 
+
+Usamos para associar coisas que estão intimamente relacionadas e para desassociar outras fracamente relacionadas. Podemos colocar os operadores de atribuição entre espaço em branco para destacá-los.
+```bash
+function measureLine($line) {
+    global $lineCount, $totalChars, $lineWidthHistogram; 
+    $lineCount++;
+    $lineSize = strlen($line);
+    $totalChars += $lineSize; //fica mais fácil a leitura
+    $lineWidthHistogram->addLine($lineSize, $lineCount);
+    recordWidestLine($lineSize);
+}
+```
+Mas não devemos colocar espaços entre nomes de funções e os parênteses de abertura, pois eles são intimamente relacionados. Podemos separar os parâmetros dentro dos parênteses com espaço, para realçar a vírgula.
+
+### Alinhamento horizontal
+
+Não é um alinhamento prático, pois a leitura dele é mais demorada e podemos nos confundir. Se tivermos listas longas de declarações que precisem ser alinhadas, o problema está no tamanho das listas e não na falta de alinhamento.
+
+### Identação
+
+Um arquivo possui níveis diferentes de hierarquia, e para tornar visível essa hierarquia, indentamos as linhas de acordo com sua hierarquia. Ela permite que façamos uma leitura mais pratica e rápida do código.
+    - instruções no nível do arquivo (classes, por exemplo) não são indentadas;
+    - métodos dentro das classes são indentados a um nível à direita delas (dá um tab);
+    - implementação de método são indentados a um nível à direita da declaração do método;
+    - implementação de blocos são implementados a um nível à direita do bloco que as contém; e assim por diante.
+    
+Às vezes, ficamos tentados a não usar a indentação em estruturas pequenas. Mas pode-se usar uma linha em branco entre as declarações, para expandir o escopo.
+```bash
+public function CommentWidget() {
+};
+
+public function render() {
+}
+```
+
+### Regra de equipes
+
+Uma equipe de desenvolvedores deve escolher um único estilo de formatação e todos os membros devem usá-la, para que o software tenha um estilo consistente.
+> Um bom sistema é composto por uma série de documentos de fácil leitura. Eles precisam ser consistentes e sutis.
+
 [⬆️Voltar ao Topo](#sumário)
