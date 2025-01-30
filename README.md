@@ -6,6 +6,7 @@
 3. [Funções](#funções)
 4. [Comentários](#comentários)
 5. [Formatação](#formatação)
+6. [Objetos e Estruturas de Dados](#objetos-e-estruturas-de-dados)
 
 # Nomes Significativos
 
@@ -430,5 +431,95 @@ public function render() {
 
 Uma equipe de desenvolvedores deve escolher um único estilo de formatação e todos os membros devem usá-la, para que o software tenha um estilo consistente.
 > Um bom sistema é composto por uma série de documentos de fácil leitura. Eles precisam ser consistentes e sutis.
+
+[⬆️Voltar ao Topo](#sumário)
+
+# Objetos e Estruturas de Dados
+
+Declaramos nossas variáveis como privadas pois não queremos ninguém dependendo delas, para que possamos alterá-las da forma que quisermos.
+
+### Abstração de dados
+
+Abstração de dados é esconder como os dados são armazenados e manipulados, expondo apenas o que o usuário precisa saber. Isso evita que a implementação interna fique exposta, tornando o código mais flexível e fácil de manter.
+
+Não basta criar getters e setters → O ideal é criar uma interface que represente o conceito dos dados, não apenas seus valores crus.
+Vantagem: O código fica mais flexível e menos dependente da implementação interna.
+
+### Antissimetria data/objeto
+
+Objetos usam abstrações para esconder seus dados e expõem as funções que operam em tais dados. Já as estruturas de dados expõem seus dados e não possuem funções significativas.
+
+O código procedural (usado em estruturas de dados) facilita a adição de novas funções sem precisar alterar as estruturas de dados existentes. O código orientado a objeto (OO), por outro lado, facilita a adição de novas classes sem precisar alterar
+as funções existentes.
+
+Porém, o código procedural dificulta a adição de novas estruturas de dados, pois todas as funções teriam de ser alteradas. O código OO dificulta a adição de novas funções, pois todas as classes teriam de ser alteradas.
+> O que é difícil para OO é fácil para procedural, e vice-versa.
+
+### Lei de Deméter
+
+É uma heurística: um objeto deve ter conhecimento apenas de seus próprios componentes ou objetos intimamente relacionados a ele, e não deve expor a estrutura interna de seus componentes. É literalmente sobre não falar com estranhos.
+
+Um objeto deve interagir apenas com seus vizinhos imediatos e não com os vizinhos de seus vizinhos. Isso reduz a dependência, tornando o código mais modular e fácil de manter.
+```bash
+class Motor {
+    public function ligar() {
+        echo "Motor ligado!\n";
+    }
+}
+
+class Carro {
+    private Motor $motor;
+
+    public function __construct() {
+        $this->motor = new Motor();
+    }
+
+    public function getMotor(): Motor {
+        return $this->motor; //Expõe a estrutura interna
+    }
+}
+
+class Pessoa {
+    private Carro $carro;
+
+    public function __construct() {
+        $this->carro = new Carro();
+    }
+
+    public function dirigir() {
+        $this->carro->getMotor()->ligar(); //A Pessoa acessa o Motor diretamente, isso quebra o encapsulamento
+    }
+}
+
+```
+### Train Wrecks
+
+São chamados assim pois parecem vários carros de trem acoplados. Elas são consideradas descuidadas e devem ser evitadas. O código acima poderia ser dividido como:
+```bash
+$opts = $ctxt->getOptions();
+$scratchDir = $opts->getScratchDir();
+$outputDir = $scratchDir->getAbsolutePath();
+```
+Se esse código viola a Lei de Deméter? depende se `ctxt`, `Options` e `ScracthDir` são ou não objetos ou estrutura de dados. Se forem objetos, é uma violação clara da lei; se forem estrutura de dados sem atividades, então a lei não se aplica.
+
+O uso de funções de acesso confunde essas questões.
+Isso não seria tão confuso se as estruturas de dados tivessem variáveis públicas e nenhuma função, enquanto objetos tivessem apenas variáveis privadas e funções públicas. Mas alguns frameworks exigem que estruturas de dados simples tenham métodos acessores e de alteração.
+
+### Híbridos
+
+São estruturas que são metade objetos e metade estrutura de dados. Elas possuem funções que fazem algo, e também variáveis ou métodos de acesso e de alteração públicos, que por sua vez tornam as variáveis privadas em públicas.
+Com isso, outras funções externas podem usar essas variáveis da forma como um programa procedimental usaria uma estrutura de dados.
+> ás vezes chama-se Feature Envy em Refatoração: ocorre quando um método de uma classe acessa os campos de outra classe com mais frequência do que seus próprios campos.
+
+### Objetos de transferência de dados
+
+A forma perfeita de uma estrutura de dados é uma classe com variáveis públicas e nenhuma função. Também chamado de DTO. São estruturas úteis, principalmente para se comunicar com banco de dados, por exemplo.
+Geralmente são os primeiros numa série de estágios de tradução que convertem dados brutos num BD em objetos no código.
+
+### Active Record
+
+São formas especiais de DTOs. São estruturas de dados com variáveis públicas; mas possuem métodos de navegação, como save e find. Basicamente, são traduções diretas das tabelas de bancos de dados de outras fontes de dados.
+Não podemos tratá-los como objetos, pois isso acaba criando um híbrido. Devemos tratá-los como um estrutura de dados e criar objetos separados que contenham as regras de negócio e que ocultem seus dados internos.
+
 
 [⬆️Voltar ao Topo](#sumário)
