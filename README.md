@@ -261,7 +261,7 @@ Funções que retornam códigos de erros é uma violação da separação comand
 Os blocos `try-catch` devem ficar em suas próprias funções, porque são feios e confundem a estrutura do código.
 
 
-### **Tratamento de Erro**
+### **Tratamento de Erro.**
 
 Funções que tratam erros devem tratar apenas erros. Ou seja, depois do `catch/finally`, não se deve ter mais código. Quando se usa exceções invés de erros, as novas exceções são derivadas da classe `Exception` e não é necessário recompilar.
 
