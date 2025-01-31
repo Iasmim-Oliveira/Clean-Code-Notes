@@ -7,6 +7,7 @@
 4. [Comentários](#comentários)
 5. [Formatação](#formatação)
 6. [Objetos e Estruturas de Dados](#objetos-e-estruturas-de-dados)
+7. [Tratamento de erro](#tratamento-de-erro)
 
 # Nomes Significativos
 
@@ -521,5 +522,41 @@ Geralmente são os primeiros numa série de estágios de tradução que converte
 São formas especiais de DTOs. São estruturas de dados com variáveis públicas; mas possuem métodos de navegação, como save e find. Basicamente, são traduções diretas das tabelas de bancos de dados de outras fontes de dados.
 Não podemos tratá-los como objetos, pois isso acaba criando um híbrido. Devemos tratá-los como um estrutura de dados e criar objetos separados que contenham as regras de negócio e que ocultem seus dados internos.
 
+
+[⬆️Voltar ao Topo](#sumário)
+
+# Tratamento de erro
+
+As coisas podem dar errado. Para isso, usamos o tratamento de erros.
+Alguns códigos possuem muitos tratamentos de erros, o que torna difícil ver o que o código faz. Esse recurso é importante, mas se obscurecer a lógica, está errado.
+
+### Use exceções ao invés de retornar códigos
+
+No passado, haviam linguagens que não suportavam exceções, o que tornava o tratamento de erro limitado. Ou era criado uma flag de erro ou retornava um código de erro que o chamador pudesse verificar.
+Porém, essas técnicas enchiam o chamador, que precisava realizar as verificações logo após a chamada. Geralmente, também esqueciam de fazer isso.
+Por isso, o ideal é lançar a exceção, o código de chamada fica mais limpo e a lógica fica clara.
+
+### Crie primeiro a estrutura try-catch-finally 
+
+As exceções definem um escopo dentro do programa. Ao executar um código na parte `try`, é declarado que aquela execução pode ser cancelada a qualquer momento e então continuar no `catch`.
+
+Os blocos `try` são como transações, então o `catch` deve deixar o programa num estado consistente, independente do que aconteça no `try`. Por isso, uma boa prática é começar com uma estrutura `try-catch-finally` quando for escrever um código que talvez lance exceções. Isso ajuda a definir o que se deve esperar do código, independente do que ocorra de errado n código executado pelo `try`.
+
+### Exceções não verificadas
+
+São aquelas que o compilador não força o tratamento ou declaração. Em muitas linguagens, só há as exceções não verificadas. 
+
+#### Por que não usar exceções verificadas?
+
+A ideia aqui é não usar exceções verificadas, pois elas possuem 3 problemas:
+- **Violam o Princípio Aberto-Fechado**: classes devem estar abertas para extensão, e fechadas para modificação. Com as exceções verificadas, quando um método lança a exceção, é obrigatória a modificação dos métodos que fazem parte da cadeia de chamadas (desde onde há o lançamento até o ponto onde ela é tratada).
+- **Cascata de alterações**: quando uma função de nível inferior é alterada para lançar uma nova exceção, todos os métodos que chamam essa função devem ser alterados para lidar com a nova exceção. Dessa forma, as alterações podem se propagar por toda a aplicação.
+- **Encapsulamento**: elas quebram o encapsulamento porque forçam os métodos intermediários a conhecerem detalhes específicos das exceções lançadas por métodos inferiores, mesmo que os métodos intermediários não precisem o não devam lidar com eles.
+As exceções verificadas podem ser úteis em situações específicas, como criação de bibliotecas críticas. Em outros usos, seus custos superam as vantagens.
+
+### Forneça exceções com contexto
+
+Cada exceção lançada precisa de um contexto suficiente para determinar a fonte e localização de um erro.
+É ideal criar mensagens de erro informativas e passá-las junto com as exceções. Mencione a operação que falhou e o tipo de falha.
 
 [⬆️Voltar ao Topo](#sumário)
