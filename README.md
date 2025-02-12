@@ -559,4 +559,20 @@ As exceções verificadas podem ser úteis em situações específicas, como cri
 Cada exceção lançada precisa de um contexto suficiente para determinar a fonte e localização de um erro.
 É ideal criar mensagens de erro informativas e passá-las junto com as exceções. Mencione a operação que falhou e o tipo de falha.
 
+### Defina as classes de exceções segundo as necessidades do chamador
+
+É importante definir classes de exceções de acordo com as necessidades do seu chamador (quem captura e trata as exceções).
+Para evitar repetição de código e capturas de exceções genéricas, pode-se usar o `wrapper`, que encapsula e converte todas as exceções específicas em uma única exceção genérica. Isso deixa o código mais limpo e flexível.
+
+### Defina o fluxo normal
+
+Com essa estrutura de código usando exceções, reduzimos a complexidade causada pelo tratamento de exceções, porém é alta a detecção de erro no programa, já que temos várias capturas.
+Para evitar isso, podemos usar o Special Case Pattern, que captura exceções excepcionais e impede que o código fique poluído.
+Dessa forma, a lógica do código principal **não precisa mais se preocupar com exceções** nem lidar com "casos especiais". A decisão sobre o que retornar fica encapsulada dentro da implementação da classe.
+
+### Não retorne nem passe `null`
+
+Não retornar `null` pelas funções também é errado, pois basta esquecermos uma verificação `null` para quebrar o código.
+Também é horrível passar `null` para os métodos, a menos que tenha alguma API que espere receber `null`.
+
 [⬆️Voltar ao Topo](#sumário)
