@@ -18,12 +18,13 @@ Nomeamos muitas coisas na programação, e como fazemos muito isso, é bom que f
 
 O nome de uma variável deve dizer tudo sobre ela. Se ele precisa de um comentário, então não é um bom nome.
 ```bash
-
+<?php
 //Ruim
 $n = "Iasmim"; 
 
 //Bom
 $name = "Iasmim";
+?>
 ```
 
 ### **Evitar Informações Erradas**
@@ -33,11 +34,13 @@ Deve-se evitar passar dicas falsas que confundam o sentido do código. Por exemp
 Também devemos ter cuidado ao usar nomes parecidos para duas coisas diferentes, pois fica difícil de distinguir a diferença entre eles. Exemplo: `XYZControllerForEfficientHandlingOfStrings` e `XYZControllerForEfficientStorageOfStrings` são muito semelhantes.
 
 ```bash
+<?php
 //Ruim
 $dtTime = "2025-01-20";
 
 //Bom
 $dateString = "2025-01-20";
+?>
 ```
 
 
@@ -48,6 +51,7 @@ Alterar um nome de maneira arbitrária, só porque o nome que você quer usar j�
 Usar números sequenciais em nomes não é expressivo o suficiente, pois esse tipo de nome não nos diz nada sobre o que o programa faz.
 
 ```bash
+<?php
 //Ruim
 $product1 = "Livro";
 $product2 = "Caderno";
@@ -55,6 +59,7 @@ $product2 = "Caderno";
 //Bom
 $book = "Livro";
 $notebook = "Caderno";
+?>
 ```
 
 ### **Use Nomes Pronunciáveis**
@@ -64,11 +69,13 @@ Crie nomes pronunciáveis, se não puder pronunciá-lo, será difícil discutí-
 É importante fazer a distinção de nomes de uma forma que o leitor compreenda a diferença e entenda rapidamente o que aquela variável faz.
 
 ```bash
+<?php
 //Ruim
 $dtStr = "2025-01-20"
 
 //Bom
 $dateString = "2025-01-20";
+?>
 ```
 
 
@@ -79,6 +86,7 @@ Usar nomes pronunciáveis e passíveis de busca, que não sejam confundidos com 
 > O tamanho de um nome deve ser proporcional ao tamanho do escopo.
 
 ```bash
+<?php
 //Ruim
 $a = 10;
 $b = 20
@@ -86,6 +94,7 @@ $b = 20
 //Bom
 $firstNumber = 10;
 $secondNumber = 20
+?>
 ```
 
 ### **Evite Codificações**
@@ -104,10 +113,12 @@ Evitar o mapeamento mental, onde o leitor precisa ler todo o código para entend
 
 Classes e objetos devem ter nome substantivos.
 ```bash
+<?php
 class UserManager
 {
   //código da classe
 }
+?>
 ```
 
 
@@ -117,6 +128,7 @@ Nomes de métodos devem ter verbos (get, post, delete, etc).
 
 Podemos usar *factory methods* quando os construtores estiverem sobrecarregados com nomes que descrevam os parâmetros. Para forçar o uso, torne os construtores correspondentes como privados.
 ```bash
+<?php
 class UserManager
 {
   public function getUserData()
@@ -124,6 +136,7 @@ class UserManager
     //código do método
   }
 }
+?>
 ```
 
 
@@ -136,6 +149,7 @@ Escolher uma palavra por cada conceito abstrato e permanecer com ela até o fim.
 
 Não usar a mesma palavra para 2 propósitos.
 ```bash
+<?php
 //Ruim
 $bankAccount = "123456";
 $riverBank = "Amazon River"
@@ -143,6 +157,7 @@ $riverBank = "Amazon River"
 //Bom
 $bankAccountNumber = "123456";
 $riverSide = "Amazon River"
+?>
 ```
 
 [⬆️Voltar ao Topo](#sumário)
@@ -346,7 +361,8 @@ Linhas de código que estão relacionadas devem aparecer verticalmente unidas (n
 
 - Declaração de variáveis: devem ficar o mais próximas possível de onde serão usadas. As variáveis locais devem ficar no topo de cada função.
 ```bash
-  function readPreferences() {
+<?php
+function readPreferences() {
     $filePath = getPreferencesFile();
     $preferences = getPreferences();
     $properties = new Properties($preferences);
@@ -368,10 +384,12 @@ Linhas de código que estão relacionadas devem aparecer verticalmente unidas (n
         }
     }
 }
+?>
 ```
 
 - Devem-se declarar as variáveis de controle para loops dentro da estrutura de iteração. Em casos raros, pode-se declarar uma variável  no início de um bloco ou depois de um loop em uma função longa.
 ```bash
+<?php
 public function countTestCases{
   $count = 0;
   foreach ($this->test as $each) {
@@ -379,6 +397,7 @@ public function countTestCases{
   }
   return $count;
 }
+?>
 ```
 - Variáveis de instância: devem ser declaradas no início da classe. Isso não aumenta a distância vertical entre elas pois provavelmente elas são usadas por quase todos os métodos. Muito já se falou sobre onde declará-las, mas o que importa é que elas sejam declaradas em um local bem conhecido, para que todos saibam onde buscar as declarações.
 - Funções dependentes: se uma função chama outra, elas devem ficar verticalmente próximas, e a que chama deve ficar acima da função que vai ser chamada.
@@ -396,6 +415,7 @@ Não tem um limite ideal, mas devemos nos esforçar para manter as linhas curtas
 
 Usamos para associar coisas que estão intimamente relacionadas e para desassociar outras fracamente relacionadas. Podemos colocar os operadores de atribuição entre espaço em branco para destacá-los.
 ```bash
+<?php
 function measureLine($line) {
     global $lineCount, $totalChars, $lineWidthHistogram; 
     $lineCount++;
@@ -404,6 +424,7 @@ function measureLine($line) {
     $lineWidthHistogram->addLine($lineSize, $lineCount);
     recordWidestLine($lineSize);
 }
+?>
 ```
 Mas não devemos colocar espaços entre nomes de funções e os parênteses de abertura, pois eles são intimamente relacionados. Podemos separar os parâmetros dentro dos parênteses com espaço, para realçar a vírgula.
 
@@ -421,11 +442,13 @@ Um arquivo possui níveis diferentes de hierarquia, e para tornar visível essa 
     
 Às vezes, ficamos tentados a não usar a indentação em estruturas pequenas. Mas pode-se usar uma linha em branco entre as declarações, para expandir o escopo.
 ```bash
+<?php
 public function CommentWidget() {
 };
 
 public function render() {
 }
+?>
 ```
 
 ### Regra de equipes
@@ -462,6 +485,7 @@ Porém, o código procedural dificulta a adição de novas estruturas de dados, 
 
 Um objeto deve interagir apenas com seus vizinhos imediatos e não com os vizinhos de seus vizinhos. Isso reduz a dependência, tornando o código mais modular e fácil de manter.
 ```bash
+<?php
 class Motor {
     public function ligar() {
         echo "Motor ligado!\n";
@@ -491,15 +515,17 @@ class Pessoa {
         $this->carro->getMotor()->ligar(); //A Pessoa acessa o Motor diretamente, isso quebra o encapsulamento
     }
 }
-
+?>
 ```
 ### Train Wrecks
 
 São chamados assim pois parecem vários carros de trem acoplados. Elas são consideradas descuidadas e devem ser evitadas. O código acima poderia ser dividido como:
 ```bash
+<?php
 $opts = $ctxt->getOptions();
 $scratchDir = $opts->getScratchDir();
 $outputDir = $scratchDir->getAbsolutePath();
+?>
 ```
 Se esse código viola a Lei de Deméter? depende se `ctxt`, `Options` e `ScracthDir` são ou não objetos ou estrutura de dados. Se forem objetos, é uma violação clara da lei; se forem estrutura de dados sem atividades, então a lei não se aplica.
 
