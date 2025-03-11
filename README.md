@@ -8,6 +8,7 @@
 5. [Formatação](#formatação)
 6. [Objetos e Estruturas de Dados](#objetos-e-estruturas-de-dados)
 7. [Tratamento de erro](#tratamento-de-erro)
+8. [Limites](#limites)
 
 # Nomes Significativos
 
@@ -600,5 +601,37 @@ Dessa forma, a lógica do código principal **não precisa mais se preocupar com
 
 Não retornar `null` pelas funções também é errado, pois basta esquecermos uma verificação `null` para quebrar o código.
 Também é horrível passar `null` para os métodos, a menos que tenha alguma API que espere receber `null`.
+
+[⬆️Voltar ao Topo](#sumário)
+
+
+# Limites
+
+Basicamente, o capítulo fala sobre a integração limpa entre códigos externos, sejam eles pacotes de outros fabricantes, com o código que está sendo desenvolvido por nós.
+
+### Explorando e aprendendo sobre limites
+Códigos de terceiros podem nos ajudar a obter funcionalidades em menos tempo, mas é bom criar testes para esses códigos que forem usados.
+
+Entender código de terceiros é difícil e integrá-los também. Então, pode-se criar testes para explorar nosso conhecimento sobre esse código. Jim Newkirk chama isso de *teste de aprendizagem.*
+
+Nesses testes, chamam a API do código externo como faríamos ao usá-la na nossa aplicação. O teste foca no que desejamos saber sobre a API.
+
+### Os testes de aprendizagem são melhores do que de graça
+
+No fim, eles acabam não custando nada. é necessário aprender sobre a API e escrever os testes foi uma forma fácil de obter o conhecimento. Eles são experimentos precisos que ajudam no nosso entendimento.
+
+Além de serem de graça, possuem um retorno positivo. Quando houver nossas distribuições daquele pacote externo, podemos executar os testes para ver se há diferenças nas atividades.
+
+Você precise ou não do conhecimento proporcionado pelos testes de aprendizagem, deve-se definir um limite claro por meio de uma série de testes externos que experimentem a interface da mesma forma que seu código faria.
+
+
+### Limites limpos
+
+Um código sempre tem alterações com o passar do tempo. Bons projetos de software acomodam modificações sem muito investimento ou trabalho. Quando usa-se códigos que não possuem limites bem definidos, é preciso verificar nosso investimento e garantir que uma mudança futura não custe tanto.
+
+O código precisa de um limite bem claro e testes que definem o que é esperado dele.
+
+Deve-se evitar que grande parte do código enxergue as particularidades de códigos terceiros (vide [Capítulo 6](#objetos-e-estruturas-de-dados) ).
+> É melhor depender de algo que você controle do que pegar algo que acabe controlando você.
 
 [⬆️Voltar ao Topo](#sumário)
