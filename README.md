@@ -635,3 +635,25 @@ Deve-se evitar que grande parte do código enxergue as particularidades de códi
 > É melhor depender de algo que você controle do que pegar algo que acabe controlando você.
 
 [⬆️Voltar ao Topo](#sumário)
+
+# Testes de Unidade
+
+Este capítulo traz o conceito de TDD, com seus usos e boas práticas.
+
+TDD é uma abordagem de desenvolvimento de software onde o teste é escrito antes do código. Ele segue um ciclo:
+
+- Red → Escrever o teste para a nova feature. Como o código real ainda não foi escrito, o teste irá falhar.
+- Green → Escreva apenas o código suficiente para passar no teste.
+- Refactor → Melhore o código enquanto mantém o teste aprovado.
+
+Isso permite a escrita de um código limpo, com manutenibilidade e sem bugs, garantindo que tudo é testado antes de ser implementado.
+
+### As 3 leis do TDD
+
+1° → Não se deve escrever o código de produção até criar um teste de unidade de falhas.
+
+2° → Não se deve escrever mais de um teste de unidade do que o necessário para falhar, e não compilar é falhar.
+
+3° → Não se deve escrever mais códigos de produção do que o necessário para aplicar o teste de falha atual.
+
+[⬆️Voltar ao Topo](#sumário)
