@@ -656,4 +656,25 @@ Isso permite a escrita de um código limpo, com manutenibilidade e sem bugs, gar
 
 3° → Não se deve escrever mais códigos de produção do que o necessário para aplicar o teste de falha atual.
 
+### Como manter os testes limpos
+
+Fazer um teste de maneira rápida e mal feita, sem pensar muito nas boas práticas de um desenvolvimento de testes, é pior do que não ter teste nenhum.
+Os testes precisam evoluir junto com o código de produção. Quanto pior o teste, mais difícil é mudá-lo. Quanto mais confuso for o teste, maiores as chances de gastar mais tempo escrevendo novos testes do que desenvolvendo o código de produção. 
+Conforme o código de produção é modificado, os testes antigos começam a falhar e a bagunça no código de teste dificulta fazê-lo funcionar de novo. Assim, os testes começam a ser vistos como um problema.
+O código de testes requer cuidado, raciocínio e planejamento. é preciso mantê-lo tão limpo quanto o código de produção.
+> Os códigos de testes são tão importantes quanto o código de produção.
+
+### Os testes habilitam as “-idades”
+
+Caso os testes não estejam limpos, eles serão perdidos. E sem testes, perde-se a flexibilidade do código. São eles quem mantém o código reutilizável e passíveis de manutenção. 
+Se há testes, não há medo de realizar alterações no código. Sem testes, cada alteração pode criar um bug. Não importa o grau de flexibilidade da arquitetura, sem os testes há uma relutância em realizar alterações por conta de bugs inesperados. 
+Então, ter uma coleção de testes que cubram todo o código de produção ajuda a manter o projeto mais limpo.
+> Quanto pior for o teste, pior o código se torna. No final, você perde os testes e seu código se degrada.
+
+### Testes limpos
+
+O que torna os testes limpos é a legibilidade. E como ter legibilidade no teste? Tendo clareza, simplicidade e consistência de expressão. Os testes devem ir direto ao ponto e usar apenas os dados e funções que precisa.
+> Num teste você quer dizer muito, com o mínimo de expressões possíveis.
+
+
 [⬆️Voltar ao Topo](#sumário)
