@@ -9,6 +9,7 @@
 6. [Objetos e Estruturas de Dados](#objetos-e-estruturas-de-dados)
 7. [Tratamento de erro](#tratamento-de-erro)
 8. [Limites](#limites)
+9. [Testes de unidade](#testes-de-unidade)
 
 # Nomes Significativos
 
