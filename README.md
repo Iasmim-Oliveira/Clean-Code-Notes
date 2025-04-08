@@ -10,6 +10,7 @@
 7. [Tratamento de erro](#tratamento-de-erro)
 8. [Limites](#limites)
 9. [Testes de unidade](#testes-de-unidade)
+10. [Classes](#classes)
 
 # Nomes Significativos
 
@@ -708,5 +709,41 @@ Repeatable → deve-se poder repetir os testes em qualquer ambiente.
 Self-Validating → devem ter uma saída booleana. 
 
 Timely → precisam ser escritos em tempo hábil. Devem ser criados antes do código de produção onde serão aplicados.
+
+[⬆️Voltar ao Topo](#sumário)
+
+# Classes
+
+
+### Organização das classes
+
+Aqui, o Uncle Bob fala de uma convenção padrão Java para declaração de classes. Porém, não é aplicável às outras linguagens. Mas há alguns conceitos que são comuns à todas elas, como: manter a consistência do projeto, manter o padrão escolhido pela equipe, escrever um código legível e fácil de entender.
+
+## Encapsulamento
+
+Não é ideal que todas as variáveis e funções sejam privadas. Às vezes é preciso tornar uma variável ou função protegida para que ela possa ser acessada por testes. Aqui, o teste é prioridade. Entretanto, primeiro procuramos uma forma de manter a privacidade. Perder o encapsulamento é o último recurso.
+
+
+### As classes devem ser pequenas!
+
+Primeira regra: as classes devem ser pequenas.
+
+Segunda regra: as classes devem ser menores ainda.
+
+O tamanho é determinado contando as responsabilidades da classe.
+
+O nome da classe precisa descrever quais responsabilidades ela faz, e esse nome é a primeira forma de ajudar a determinar o tamanho dela. Quanto mais ambíguo for o nome, maior a chance de a classe ter muitas responsabilidades.
+
+> 📝 Devemos conseguir descrever a classe com cerca de 25 palavras sem usar “se”, “e”, “ou” ou “mas”. Se tiver alguma dessa conjunções, então a classe tem mais responsabilidades do que deveria.
+
+
+### O Princípio da Responsabilidade Única
+
+A classe deve ter um, e apenas um, motivo para mudar. Isso dá uma definição de responsabilidade e uma orientação sobre o tamanho da classe. Ela deve ter uma responsabilidade e um motivo para mudar.
+
+O SRP é um dos conceitos mais importantes em OO. Queremos que os sistemas sejam compostos por muitas classes pequenas, e não poucas classes grandes. Cada classe pequena contribui com outras para obter os comportamentos desejados no sistema. 
+
+> ⚠️ O projeto não termina se o programa funciona. É preciso melhorá-lo, torná-lo modular e escalável, deixá-lo com fácil manutenção. Por isso, o SRP é tão importante.
+
 
 [⬆️Voltar ao Topo](#sumário)
