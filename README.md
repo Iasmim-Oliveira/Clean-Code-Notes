@@ -746,4 +746,19 @@ O SRP é um dos conceitos mais importantes em OO. Queremos que os sistemas sejam
 > ⚠️ O projeto não termina se o programa funciona. É preciso melhorá-lo, torná-lo modular e escalável, deixá-lo com fácil manutenção. Por isso, o SRP é tão importante.
 
 
+## Coesão
+
+As classes devem ter poucas instâncias de variáveis. Cada método da classe deve manipular uma ou mais dessas variáveis. Quanto mais variáveis um método manipular, mais coeso o método é para a classe. Uma classe onde cada variável é utilizada por um método é totalmente coesa. 
+
+Porém, não é aconselhável e nem possível criar essas classes totalmente coesas, mas também é desejável alcançar o máximo de coesão. 
+
+Ás vezes, quando tentamos manter as funções pequenas e listas de parâmetros curtas, acabamos criando muitas instâncias de variáveis que são usadas por vários métodos. É necessário sempre tentar separar as variáveis e os métodos em duas ou mais classes de modo que as novas classes sejam mais coesas.
+
+
+## Como organizar para alterar
+
+Em muitos sistemas, mudanças são constantes, e a cada alteração existe o risco de quebrar algo. Em um sistema limpo, organizamos as classes de modo a reduzir os riscos nas alterações. 
+
+As classes devem ser abertas para expansão, mas fechadas para alteração.
+
 [⬆️Voltar ao Topo](#sumário)
