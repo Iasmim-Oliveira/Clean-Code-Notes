@@ -759,6 +759,15 @@ Porém, não é aconselhável e nem possível criar essas classes totalmente coe
 
 Em muitos sistemas, mudanças são constantes, e a cada alteração existe o risco de quebrar algo. Em um sistema limpo, organizamos as classes de modo a reduzir os riscos nas alterações. 
 
-As classes devem ser abertas para expansão, mas fechadas para alteração.
+> As classes devem ser abertas para expansão, mas fechadas para alteração.
+
+
+## Como isolar das alterações
+
+As necessidades mudam, e o código também. Em POO, há classes concretas, que detalham a implementação, e classes abstratas, que são apenas conceitos. Uma classe que depende de detalhes concretos corre perigo quando tais detalhes são modificados. Então, podemos oferecer interfaces e classes abstratas para isolar o impacto desses detalhes.
+
+Depender de detalhes concretos também gera desafios aos testes.
+
+Então, o uso de interfaces e classes abstratas desacoplam o projeto, facilitando manutenção, entendimento e testes.
 
 [⬆️Voltar ao Topo](#sumário)
