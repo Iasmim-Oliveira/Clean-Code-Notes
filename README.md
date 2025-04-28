@@ -11,6 +11,7 @@
 8. [Limites](#limites)
 9. [Testes de unidade](#testes-de-unidade)
 10. [Classes](#classes)
+11. [Sistemas](#sistemas)
 
 # Nomes Significativos   
 
@@ -769,5 +770,26 @@ As necessidades mudam, e o código também. Em POO, há classes concretas, que d
 Depender de detalhes concretos também gera desafios aos testes.
 
 Então, o uso de interfaces e classes abstratas desacoplam o projeto, facilitando manutenção, entendimento e testes.
+
+[⬆️Voltar ao Topo](#sumário)
+
+
+# Sistemas
+
+Este capítulo discorre sobre como manter o código limpo em um nível maior, a nível de sistema.
+
+
+## Separe a construção e o uso de um sistema
+
+A construção é um processo diferente de utilização.
+
+*Os sistemas devem separar o processo de inicialização - criação de objetos e conexão entre dependências - da lógica em tempo de execução que vem após a inicialização.* 
+
+Por exemplo, há a Inicialização/Avaliação tardia, que é a inicialização do código dentro de uma lógica em tempo de execução. Essa forma tem seus méritos, como: tempo de inicialização mais rápido e sem retorno `null`.
+
+Porém, isso torna a dependência codificada permanentemente e tudo que seu construtor exige. Não é possível compilar sem resolver essas dependências. 
+
+Efetuar testes também pode ser um problema.
+
 
 [⬆️Voltar ao Topo](#sumário)
