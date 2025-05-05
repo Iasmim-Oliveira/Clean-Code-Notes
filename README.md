@@ -21,7 +21,7 @@ Nomeamos muitas coisas na programação, e como fazemos muito isso, é bom que f
 ### **Nomes que Demonstram seu Propósito**
 
 O nome de uma variável deve dizer tudo sobre ela. Se ele precisa de um comentário, então não é um bom nome.
-```bash
+```php
 <?php
 //Ruim
 $n = "Iasmim"; 
@@ -37,7 +37,7 @@ Deve-se evitar passar dicas falsas que confundam o sentido do código. Por exemp
 
 Também devemos ter cuidado ao usar nomes parecidos para duas coisas diferentes, pois fica difícil de distinguir a diferença entre eles. Exemplo: `XYZControllerForEfficientHandlingOfStrings` e `XYZControllerForEfficientStorageOfStrings` são muito semelhantes.
 
-```bash
+```php
 <?php
 //Ruim
 $dtTime = "2025-01-20";
@@ -54,7 +54,7 @@ Alterar um nome de maneira arbitrária, só porque o nome que você quer usar j�
 
 Usar números sequenciais em nomes não é expressivo o suficiente, pois esse tipo de nome não nos diz nada sobre o que o programa faz.
 
-```bash
+```php
 <?php
 //Ruim
 $product1 = "Livro";
@@ -72,7 +72,7 @@ Crie nomes pronunciáveis, se não puder pronunciá-lo, será difícil discutí-
 
 É importante fazer a distinção de nomes de uma forma que o leitor compreenda a diferença e entenda rapidamente o que aquela variável faz.
 
-```bash
+```php
 <?php
 //Ruim
 $dtStr = "2025-01-20"
@@ -89,7 +89,7 @@ Usar nomes pronunciáveis e passíveis de busca, que não sejam confundidos com 
 
 > O tamanho de um nome deve ser proporcional ao tamanho do escopo.
 
-```bash
+```php
 <?php
 //Ruim
 $a = 10;
@@ -116,7 +116,7 @@ Evitar o mapeamento mental, onde o leitor precisa ler todo o código para entend
 ### **Nomes de Classes**
 
 Classes e objetos devem ter nome substantivos.
-```bash
+```php
 <?php
 class UserManager
 {
@@ -131,7 +131,7 @@ class UserManager
 Nomes de métodos devem ter verbos (get, post, delete, etc). 
 
 Podemos usar *factory methods* quando os construtores estiverem sobrecarregados com nomes que descrevam os parâmetros. Para forçar o uso, torne os construtores correspondentes como privados.
-```bash
+```php
 <?php
 class UserManager
 {
@@ -152,7 +152,7 @@ Escolher uma palavra por cada conceito abstrato e permanecer com ela até o fim.
 ### **Não Faça Trocadilhos**
 
 Não usar a mesma palavra para 2 propósitos.
-```bash
+```php
 <?php
 //Ruim
 $bankAccount = "123456";
@@ -364,7 +364,7 @@ Linhas de código que estão relacionadas devem aparecer verticalmente unidas (n
 É frustrante navegar por códigos complexos, tentando entender como as funções e variáveis se relacionam, o que pode ser confuso e demorado. A recomendação é manter conceitos intimamente relacionados próximos uns dos outros no código, preferencialmente no mesmo arquivo-fonte, para facilitar a compreensão, a menos que haja uma boa razão para o contrário. Além disso, evita-se usar variáveis protegidas. O objetivo é melhorar a inteligibilidade do código e reduzir a necessidade de navegar por vários arquivos-fonte e classes.
 
 - Declaração de variáveis: devem ficar o mais próximas possível de onde serão usadas. As variáveis locais devem ficar no topo de cada função.
-```bash
+```php
 <?php
 function readPreferences() {
     $filePath = getPreferencesFile();
@@ -392,7 +392,7 @@ function readPreferences() {
 ```
 
 - Devem-se declarar as variáveis de controle para loops dentro da estrutura de iteração. Em casos raros, pode-se declarar uma variável  no início de um bloco ou depois de um loop em uma função longa.
-```bash
+```php
 <?php
 public function countTestCases{
   $count = 0;
@@ -418,7 +418,7 @@ Não tem um limite ideal, mas devemos nos esforçar para manter as linhas curtas
 ### Espaçamento e continuidade horizontal 
 
 Usamos para associar coisas que estão intimamente relacionadas e para desassociar outras fracamente relacionadas. Podemos colocar os operadores de atribuição entre espaço em branco para destacá-los.
-```bash
+```php
 <?php
 function measureLine($line) {
     global $lineCount, $totalChars, $lineWidthHistogram; 
@@ -445,7 +445,7 @@ Um arquivo possui níveis diferentes de hierarquia, e para tornar visível essa 
     - implementação de blocos são implementados a um nível à direita do bloco que as contém; e assim por diante.
     
 Às vezes, ficamos tentados a não usar a indentação em estruturas pequenas. Mas pode-se usar uma linha em branco entre as declarações, para expandir o escopo.
-```bash
+```php
 <?php
 public function CommentWidget() {
 };
@@ -488,7 +488,7 @@ Porém, o código procedural dificulta a adição de novas estruturas de dados, 
 É uma heurística: um objeto deve ter conhecimento apenas de seus próprios componentes ou objetos intimamente relacionados a ele, e não deve expor a estrutura interna de seus componentes. É literalmente sobre não falar com estranhos.
 
 Um objeto deve interagir apenas com seus vizinhos imediatos e não com os vizinhos de seus vizinhos. Isso reduz a dependência, tornando o código mais modular e fácil de manter.
-```bash
+```php
 <?php
 class Motor {
     public function ligar() {
@@ -524,7 +524,7 @@ class Pessoa {
 ### Train Wrecks
 
 São chamados assim pois parecem vários carros de trem acoplados. Elas são consideradas descuidadas e devem ser evitadas. O código acima poderia ser dividido como:
-```bash
+```php
 <?php
 $opts = $ctxt->getOptions();
 $scratchDir = $opts->getScratchDir();
@@ -776,20 +776,75 @@ Então, o uso de interfaces e classes abstratas desacoplam o projeto, facilitand
 
 # Sistemas
 
-Este capítulo discorre sobre como manter o código limpo em um nível maior, a nível de sistema.
-
-
-## Separe a construção e o uso de um sistema
-
-A construção é um processo diferente de utilização.
+A construção é um processo diferente de utilização. A lógica de negócio (uso) deve estar separada da lógica de montagem (construção) do sistema.
 
 *Os sistemas devem separar o processo de inicialização - criação de objetos e conexão entre dependências - da lógica em tempo de execução que vem após a inicialização.* 
 
-Por exemplo, há a Inicialização/Avaliação tardia, que é a inicialização do código dentro de uma lógica em tempo de execução. Essa forma tem seus méritos, como: tempo de inicialização mais rápido e sem retorno `null`.
+Muitos sistemas não fazem essa separação, o código de processo de inicialização é misturado na lógica em tempo de execução. Isso muitas vezes causa dependências codificadas, atrapalhando a compilação e testes.
 
-Porém, isso torna a dependência codificada permanentemente e tudo que seu construtor exige. Não é possível compilar sem resolver essas dependências. 
+Então, mais uma vez, é ideal que o código seja o mais modular possível. O processo de inicialização da construção e atribuição de um objeto não são exceções, também precisam ser modularizados. 
 
-Efetuar testes também pode ser um problema.
+## Separação do Main
 
+Uma maneira de separar a construção do uso e isolar todos os aspectos da construção no `main` ou em módulos chamados por ele, e seguir modelando o sistema assumindo que todos os objetos foram construídos e atribuídos adequadamente.
+
+> 📝 A ideia é: o método ou arquivo principal (main, index.php, app.php, etc.) não deve conter lógica de negócio. Ele deve apenas montar o sistema, ou seja, construir os objetos e conectá-los.
+
+
+### Por quê?
+
+O `main()` é o ponto de entrada do sistema. Ele constrói os objetos necessários e então os passa ao aplicativo, que simplesmente usa. Isso deixa o sistema:
+
+- Modular
+- Testável
+- Manutenível
+- Flexível para mudanças
+
+### Exemplo
+
+**Errado:**
+
+```php
+// index.php
+$repo = new MySQLUserRepository();
+$service = new UserService($repo);
+$service->create(['name' => 'Ana']);
+
+//index.php está executando a lógica de criação de usuário.
+```
+
+**Certo:**
+```php
+// index.php
+require 'system.php';
+
+$service = buildUserService();
+$service->handleRequest($_POST); // uso separado da montagem
+
+//apenas chama funções que montam o sistema
+```
+
+```php
+// system.php (ou outro arquivo de configuração)
+function buildUserService() {
+    $repo = new MySQLUserRepository();
+    return new UserService($repo);
+}
+
+//lógica de construção
+```
+## Factories
+
+Algumas vezes pode ser preciso passar o controle par o aplicativo quando um objeto for criado. Podemos usar o padrão de Factories para isso, mas mantendo os detalhes dessa construção separada do código do aplicativo.
+
+
+> ℹ️ Factories são **objetos ou funções responsáveis por criar outros objetos**. Em vez de instanciar classes diretamente com `new`, você delega essa responsabilidade a uma **fábrica**.
+
+### Por que usar?
+
+- Isolamento de lógica de criação de objetos
+- Facilidade de troca de implementações
+- Redução de acoplamento
+- Centralização da configuração
 
 [⬆️Voltar ao Topo](#sumário)
