@@ -847,4 +847,29 @@ Algumas vezes pode ser preciso passar o controle par o aplicativo quando um obje
 - Redução de acoplamento
 - Centralização da configuração
 
+## Injeção de dependência
+
+É uma boa maneira de separar construção do uso.
+
+É um princípio de design onde uma classe não cria suas próprias dependências, mas as recebe de fora (no construtor, método ou via setter). A DI ajuda a dividir responsabilidades, evitando que a classe tenha que gerenciar a criação de objetos. Por esse motivo, classes pequenas e coesas são melhores.
+
+A DI é uma consequência prática do DIP - o D de SOLID. 
+
+>ℹ️ Módulos de alto nível não devem depender de módulos de baixo nível. Ambos devem depender de abstrações.
+
+A DI torna o código:
+
+- Mais testável - possibilita testes isolados de classes.
+- Menos acoplado
+- Mais flexível
+
+## Desenvolvimento gradual
+
+Um sistema deve ser desenvolvido gradualmente, implementando apenas os fatos de hoje, e então refatorar e expandir o sistema, implementando novos fatos amanhã. Essa é a essência das agilidades iterativa e incremental.
+
+Porém, a estrutura de sistema requer um pré-planejamento, de toda forma. 
+
+>ℹ️ Os sistemas de software são únicos, e suas arquiteturas podem crescer gradualmente se mantivermos uma separação devida de preocupações.
+
+
 [⬆️Voltar ao Topo](#sumário)
