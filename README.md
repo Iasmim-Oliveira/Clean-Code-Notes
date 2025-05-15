@@ -13,7 +13,7 @@
 10. [Classes](#classes)
 11. [Sistemas](#sistemas)
 
-# Nomes Significativos   
+# Nomes Significativos
 
 Nomeamos muitas coisas na programação, e como fazemos muito isso, é bom que façamos bem. Escolher bons nomes leva tempo, mas economiza mais. Algumas regrinhas para criação de bons nomes são:
 
