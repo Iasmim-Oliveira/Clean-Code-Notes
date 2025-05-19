@@ -17,8 +17,8 @@
 
 Nomeamos muitas coisas na programação, e como fazemos muito isso, é bom que façamos bem. Escolher bons nomes leva tempo, mas economiza mais. Algumas regrinhas para criação de bons nomes são:
 
-
-### **Nomes que Demonstram seu Propósito**
+#
+## **Nomes que Demonstram seu Propósito**
 
 O nome de uma variável deve dizer tudo sobre ela. Se ele precisa de um comentário, então não é um bom nome.
 ```php
@@ -30,8 +30,8 @@ $n = "Iasmim";
 $name = "Iasmim";
 ?>
 ```
-
-### **Evitar Informações Erradas**
+#
+## **Evitar Informações Erradas**
 
 Deve-se evitar passar dicas falsas que confundam o sentido do código. Por exemplo, usar palavras que possam ser confundidas com o nome de outras coisas. No livro, há o exemplo de palavras que são usadas como nomes de plataformas Unix.
 
@@ -47,8 +47,8 @@ $dateString = "2025-01-20";
 ?>
 ```
 
-
-### **Faça Distinções Significativas**
+#
+## **Faça Distinções Significativas**
 
 Alterar um nome de maneira arbitrária, só porque o nome que você quer usar já está em uso, não é o bastante. Se os nomes precisam ser diferentes, então eles devem ter significado distinto. Exemplo: chamar uma variável de `oLivro` só porque já existe a variável `livro`.
 
@@ -65,8 +65,8 @@ $book = "Livro";
 $notebook = "Caderno";
 ?>
 ```
-
-### **Use Nomes Pronunciáveis**
+#
+## **Use Nomes Pronunciáveis**
 
 Crie nomes pronunciáveis, se não puder pronunciá-lo, será difícil discutí-lo sem parecer um idiota (ele conta uma história sobre isso o livro e eu rachei demais). Isso é importante, porque programação também é uma atividade social.
 
@@ -82,8 +82,8 @@ $dateString = "2025-01-20";
 ?>
 ```
 
-
-### **Use Nomes Passíveis de Busca**
+#
+## **Use Nomes Passíveis de Busca**
 
 Usar nomes pronunciáveis e passíveis de busca, que não sejam confundidos com outras coisas. Usar apenas uma letra `a` para nomear algo é uma escolha ruim, pois é uma letra comum e caso seja preciso fazer uma busca, ela vai aparecer em todo o texto. Nomes longos se sobressaem aos curtos. 
 
@@ -100,20 +100,20 @@ $firstNumber = 10;
 $secondNumber = 20
 ?>
 ```
-
-### **Evite Codificações**
+#
+## **Evite Codificações**
 
 Já temos de lidar com bastante codificação e não precisamos acrescentar mais. Codificar informações do escopo ou tipos em nomes simplesmente adiciona uma tarefa extra de decodificação. Além de raramente serem pronunciáveis, é fácil de escrevê-los incorretamente.
 
-
-### **Evite o Mapeamento Mental**
+#
+## **Evite o Mapeamento Mental**
 
 Evitar o mapeamento mental, onde o leitor precisa ler todo o código para entender o que é a variável (que pode estar declarada apenas com 1 letra).
 
 > Uma diferença entre um programador esperto e um programador profissional é que este entende que clareza é fundamental. Os profissionais usam seus poderes para o bem, e escrevem códigos que outros possam entender.
 
-
-### **Nomes de Classes**
+#
+## **Nomes de Classes**
 
 Classes e objetos devem ter nome substantivos.
 ```php
@@ -125,8 +125,8 @@ class UserManager
 ?>
 ```
 
-
-### **Nomes de Métodos**
+#
+## **Nomes de Métodos**
 
 Nomes de métodos devem ter verbos (get, post, delete, etc). 
 
@@ -143,13 +143,13 @@ class UserManager
 ?>
 ```
 
-
-### **Selecione uma Palavra por Conceito**
+#
+## **Selecione uma Palavra por Conceito**
 
 Escolher uma palavra por cada conceito abstrato e permanecer com ela até o fim. É confuso ter diferentes palavras como métodos equivalentes de classes diferentes (`fetch, retrieve` e `get`, por exemplo).
 
-
-### **Não Faça Trocadilhos**
+#
+## **Não Faça Trocadilhos**
 
 Não usar a mesma palavra para 2 propósitos.
 ```php
@@ -168,7 +168,13 @@ $riverSide = "Amazon River"
 
 
 # Funções
-### **Tamanho de Blocos e Identação**
+Neste capítulo, Robert C. Martin (Uncle Bob) explora como escrever funções limpas, claras e eficazes — que são blocos fundamentais de qualquer código bem estruturado.
+
+> A ideia central é:
+“Funções devem fazer uma única coisa, e fazê-la bem.”
+
+#
+## **Tamanho de Blocos e Identação**
 
 Características de funções bem escritas:
 - Elas devem ser pequenas, no máximo 20 linhas.
@@ -176,20 +182,20 @@ Características de funções bem escritas:
 - Não devem ter estruturas aninhadas.
 - As funções devem fazer apenas 1 coisa e fazê-las bem.
 
-  
-**Princípio de responsabilidade única** - um dos princípios SOLID, afirma que uma classe deve ter apenas uma razão para mudar, ou seja, ela deve ser responsável por uma única tarefa ou funcionalidade. Isso torna o código mais fácil de entender, manter e modificar, pois alterações em uma funcionalidade específica não afetam outras partes do sistema.
+#
+##**Princípio de responsabilidade única** - um dos princípios SOLID, afirma que uma classe deve ter apenas uma razão para mudar, ou seja, ela deve ser responsável por uma única tarefa ou funcionalidade. Isso torna o código mais fácil de entender, manter e modificar, pois alterações em uma funcionalidade específica não afetam outras partes do sistema.
 
 Se uma função faz apenas alguns passos em um nível abaixo do nome da função, então ela está fazendo apenas 1 coisa. Para saber se uma função faz mais de uma coisa, é verificando se é possível extrair outra função a partir do nome dela sem gerar uma reformulação.
 
-
-### **Regra Decrescente**
+#
+## **Regra Decrescente**
 
 Não dá para dividir em seções as funções que fazem apenas 1 coisa. É preciso verificar se todas as instruções dentro da função possuem o mesmo nível de abstração, pois vários níveis diferentes dentro da mesma função causam confusão. Código é lido de cima para baixo, onde cada função é seguida de outra no próximo nível de abstração de modo que o programa é lido descendo um nível de abstração por vez enquanto a lista de funções é lida.
 
 > **Abstração:** usar um cenário real e trazer para o programa somente o essencial para seu funcionamento.
 
-
-### **Switch**
+#
+## **Switch**
 
 Por padrão, elas fazem N coisas, então é difícil deixá-las pequenas. Mas, podemos garantir que cada `switch` está em uma classe de baixo nível e nunca é repetido. É usado o polimorfismo pra isso.
 
@@ -198,18 +204,18 @@ Por padrão, elas fazem N coisas, então é difícil deixá-las pequenas. Mas, p
 A solução seria usar o `switch` em uma `abstract factory`.
 > **Abstract Factory** - é um padrão de design que cria famílias de objetos relacionados sem especificar suas classes concretas. Ele fornece uma interface para criar objetos de diferentes tipos, garantindo que sejam compatíveis entre si, sem precisar alterar o código cliente.
 
-
-### **Nome da Função**
+#
+## **Nome da Função**
 
 Usar nomes descritivos para as funções. Nomes extensos são melhores que nomes pequenos e confusos ou um comentário. O nome deve explicar o que ela faz. Importante ser consistente na nomeação das funções do módulo. Por exemplo, usar `add` pra toda função que faz a ação de adicionar algo: `addConvenio`, `addProcess`, etc.
 
-
-### **Parâmetros**
+#
+## **Parâmetros**
 
 Podemos frasear o nome da função. Isso permite uma sequência de fácil dedução. A quantidade ideal de parâmetros para a função é 0. Para ter mais de 3, deve-se ter um bom motivo. Mesmo assim, não deve ser usado. Parâmetros fazem com que o leitor do código precise entender de onde vem aquele parâmetro, pois ele não está no mesmo nível de abstração da função. Eles também deixam os testes mais complicados, pois é necessário escrever um teste para cada combinação de parâmetros. Um parâmetro de entrada é a melhor coisa depois de zero parâmetro.
 
-
-### **Formas Mônades Comuns**
+#
+## **Formas Mônades Comuns**
 
 Há duas razões para se usar um único parâmetro: quando se está fazendo uma pergunta sobre ele, como `boolean fileExists("MyFile")`; ou quando vamos transformá-lo em outra coisa, como `InputStream fileOpen("MyFile")`.
 
@@ -560,23 +566,26 @@ Não podemos tratá-los como objetos, pois isso acaba criando um híbrido. Devem
 As coisas podem dar errado. Para isso, usamos o tratamento de erros.
 Alguns códigos possuem muitos tratamentos de erros, o que torna difícil ver o que o código faz. Esse recurso é importante, mas se obscurecer a lógica, está errado.
 
-### Use exceções ao invés de retornar códigos
+#
+## Use exceções ao invés de retornar códigos
 
 No passado, haviam linguagens que não suportavam exceções, o que tornava o tratamento de erro limitado. Ou era criado uma flag de erro ou retornava um código de erro que o chamador pudesse verificar.
 Porém, essas técnicas enchiam o chamador, que precisava realizar as verificações logo após a chamada. Geralmente, também esqueciam de fazer isso.
 Por isso, o ideal é lançar a exceção, o código de chamada fica mais limpo e a lógica fica clara.
 
-### Crie primeiro a estrutura try-catch-finally 
+#
+## Crie primeiro a estrutura try-catch-finally 
 
 As exceções definem um escopo dentro do programa. Ao executar um código na parte `try`, é declarado que aquela execução pode ser cancelada a qualquer momento e então continuar no `catch`.
 
 Os blocos `try` são como transações, então o `catch` deve deixar o programa num estado consistente, independente do que aconteça no `try`. Por isso, uma boa prática é começar com uma estrutura `try-catch-finally` quando for escrever um código que talvez lance exceções. Isso ajuda a definir o que se deve esperar do código, independente do que ocorra de errado n código executado pelo `try`.
 
-### Exceções não verificadas
+#
+## Exceções não verificadas
 
 São aquelas que o compilador não força o tratamento ou declaração. Em muitas linguagens, só há as exceções não verificadas. 
 
-#### Por que não usar exceções verificadas?
+### Por que não usar exceções verificadas?
 
 A ideia aqui é não usar exceções verificadas, pois elas possuem 3 problemas:
 - **Violam o Princípio Aberto-Fechado**: classes devem estar abertas para extensão, e fechadas para modificação. Com as exceções verificadas, quando um método lança a exceção, é obrigatória a modificação dos métodos que fazem parte da cadeia de chamadas (desde onde há o lançamento até o ponto onde ela é tratada).
@@ -584,23 +593,27 @@ A ideia aqui é não usar exceções verificadas, pois elas possuem 3 problemas:
 - **Encapsulamento**: elas quebram o encapsulamento porque forçam os métodos intermediários a conhecerem detalhes específicos das exceções lançadas por métodos inferiores, mesmo que os métodos intermediários não precisem o não devam lidar com eles.
 As exceções verificadas podem ser úteis em situações específicas, como criação de bibliotecas críticas. Em outros usos, seus custos superam as vantagens.
 
-### Forneça exceções com contexto
+#
+## Forneça exceções com contexto
 
 Cada exceção lançada precisa de um contexto suficiente para determinar a fonte e localização de um erro.
 É ideal criar mensagens de erro informativas e passá-las junto com as exceções. Mencione a operação que falhou e o tipo de falha.
 
-### Defina as classes de exceções segundo as necessidades do chamador
+#
+## Defina as classes de exceções segundo as necessidades do chamador
 
 É importante definir classes de exceções de acordo com as necessidades do seu chamador (quem captura e trata as exceções).
 Para evitar repetição de código e capturas de exceções genéricas, pode-se usar o `wrapper`, que encapsula e converte todas as exceções específicas em uma única exceção genérica. Isso deixa o código mais limpo e flexível.
 
-### Defina o fluxo normal
+#
+## Defina o fluxo normal
 
 Com essa estrutura de código usando exceções, reduzimos a complexidade causada pelo tratamento de exceções, porém é alta a detecção de erro no programa, já que temos várias capturas.
 Para evitar isso, podemos usar o Special Case Pattern, que captura exceções excepcionais e impede que o código fique poluído.
 Dessa forma, a lógica do código principal **não precisa mais se preocupar com exceções** nem lidar com "casos especiais". A decisão sobre o que retornar fica encapsulada dentro da implementação da classe.
 
-### Não retorne nem passe `null`
+#
+## Não retorne nem passe `null`
 
 Não retornar `null` pelas funções também é errado, pois basta esquecermos uma verificação `null` para quebrar o código.
 Também é horrível passar `null` para os métodos, a menos que tenha alguma API que espere receber `null`.
@@ -612,14 +625,16 @@ Também é horrível passar `null` para os métodos, a menos que tenha alguma AP
 
 Basicamente, o capítulo fala sobre a integração limpa entre códigos externos, sejam eles pacotes de outros fabricantes, com o código que está sendo desenvolvido por nós.
 
-### Explorando e aprendendo sobre limites
+#
+## Explorando e aprendendo sobre limites
 Códigos de terceiros podem nos ajudar a obter funcionalidades em menos tempo, mas é bom criar testes para esses códigos que forem usados.
 
 Entender código de terceiros é difícil e integrá-los também. Então, pode-se criar testes para explorar nosso conhecimento sobre esse código. Jim Newkirk chama isso de *teste de aprendizagem.*
 
 Nesses testes, chamam a API do código externo como faríamos ao usá-la na nossa aplicação. O teste foca no que desejamos saber sobre a API.
 
-### Os testes de aprendizagem são melhores do que de graça
+#
+## Os testes de aprendizagem são melhores do que de graça
 
 No fim, eles acabam não custando nada. é necessário aprender sobre a API e escrever os testes foi uma forma fácil de obter o conhecimento. Eles são experimentos precisos que ajudam no nosso entendimento.
 
@@ -627,8 +642,8 @@ Além de serem de graça, possuem um retorno positivo. Quando houver nossas dist
 
 Você precise ou não do conhecimento proporcionado pelos testes de aprendizagem, deve-se definir um limite claro por meio de uma série de testes externos que experimentem a interface da mesma forma que seu código faria.
 
-
-### Limites limpos
+#
+## Limites limpos
 
 Um código sempre tem alterações com o passar do tempo. Bons projetos de software acomodam modificações sem muito investimento ou trabalho. Quando usa-se códigos que não possuem limites bem definidos, é preciso verificar nosso investimento e garantir que uma mudança futura não custe tanto.
 
@@ -651,7 +666,8 @@ TDD é uma abordagem de desenvolvimento de software onde o teste é escrito ante
 
 Isso permite a escrita de um código limpo, com manutenibilidade e sem bugs, garantindo que tudo é testado antes de ser implementado.
 
-### As 3 leis do TDD
+#
+## As 3 leis do TDD
 
 1° → Não se deve escrever o código de produção até criar um teste de unidade de falhas.
 
@@ -659,7 +675,8 @@ Isso permite a escrita de um código limpo, com manutenibilidade e sem bugs, gar
 
 3° → Não se deve escrever mais códigos de produção do que o necessário para aplicar o teste de falha atual.
 
-### Como manter os testes limpos
+#
+## Como manter os testes limpos
 
 Fazer um teste de maneira rápida e mal feita, sem pensar muito nas boas práticas de um desenvolvimento de testes, é pior do que não ter teste nenhum.
 
@@ -670,7 +687,8 @@ Conforme o código de produção é modificado, os testes antigos começam a fal
 O código de testes requer cuidado, raciocínio e planejamento. é preciso mantê-lo tão limpo quanto o código de produção.
 > Os códigos de testes são tão importantes quanto o código de produção.
 
-### Os testes habilitam as “-idades”
+#
+## Os testes habilitam as “-idades”
 
 Caso os testes não estejam limpos, eles serão perdidos. E sem testes, perde-se a flexibilidade do código. São eles quem mantém o código reutilizável e passíveis de manutenção. 
 
@@ -679,25 +697,30 @@ Se há testes, não há medo de realizar alterações no código. Sem testes, ca
 Então, ter uma coleção de testes que cubram todo o código de produção ajuda a manter o projeto mais limpo.
 > Quanto pior for o teste, pior o código se torna. No final, você perde os testes e seu código se degrada.
 
-### Testes limpos
+#
+## Testes limpos
 
 O que torna os testes limpos é a legibilidade. E como ter legibilidade no teste? Tendo clareza, simplicidade e consistência de expressão. Os testes devem ir direto ao ponto e usar apenas os dados e funções que precisa.
 > Num teste você quer dizer muito, com o mínimo de expressões possíveis.
 
-### Um padrão duplo
+#
+## Um padrão duplo
 
 O ambiente de teste e o de produção possuem requisitos diferentes. Geralmente, o ambiente de produção pode ter alguma restrição de CPU ou memória. Mas no de testes, não há restrição alguma. 
 Há coisas que não podem ser feitas no de produção que esteja perfeitamente bem no de teste. Geralmente é mais sobre eficiência de memória e CPU.
 
-### Uma afirmação por teste
+#
+## Uma afirmação por teste
 
 Há uma escola de pensamento que diz que cada função deve ter apenas uma instrução de afirmação (assert). Esses testes são mais fáceis e rápidos de entender. Caso não seja possível ter só uma, o ideal é minimizar ao máximo as afirmações.
 
-### Um único conceito por teste
+#
+## Um único conceito por teste
 
 A melhor regra é um conceito em cada função de teste. Caso tenha um teste com mais de um conceito sendo testado, é ideal minimizar o número de confirmações por conceito e testar apenas um conceito por teste.
 
-### F.I.R.S.T
+#
+## F.I.R.S.T
 
 Testes limpos seguem mais 5 regras:
 
@@ -715,17 +738,18 @@ Timely → precisam ser escritos em tempo hábil. Devem ser criados antes do có
 
 # Classes
 
-
-### Organização das classes
+#
+## Organização das classes
 
 Aqui, o Uncle Bob fala de uma convenção padrão Java para declaração de classes. Porém, não é aplicável às outras linguagens. Mas há alguns conceitos que são comuns à todas elas, como: manter a consistência do projeto, manter o padrão escolhido pela equipe, escrever um código legível e fácil de entender.
 
+#
 ## Encapsulamento
 
 Não é ideal que todas as variáveis e funções sejam privadas. Às vezes é preciso tornar uma variável ou função protegida para que ela possa ser acessada por testes. Aqui, o teste é prioridade. Entretanto, primeiro procuramos uma forma de manter a privacidade. Perder o encapsulamento é o último recurso.
 
-
-### As classes devem ser pequenas!
+#
+## As classes devem ser pequenas!
 
 Primeira regra: as classes devem ser pequenas.
 
@@ -737,8 +761,8 @@ O nome da classe precisa descrever quais responsabilidades ela faz, e esse nome 
 
 > 📝 Devemos conseguir descrever a classe com cerca de 25 palavras sem usar “se”, “e”, “ou” ou “mas”. Se tiver alguma dessa conjunções, então a classe tem mais responsabilidades do que deveria.
 
-
-### O Princípio da Responsabilidade Única
+#
+## O Princípio da Responsabilidade Única
 
 A classe deve ter um, e apenas um, motivo para mudar. Isso dá uma definição de responsabilidade e uma orientação sobre o tamanho da classe. Ela deve ter uma responsabilidade e um motivo para mudar.
 
@@ -746,7 +770,7 @@ O SRP é um dos conceitos mais importantes em OO. Queremos que os sistemas sejam
 
 > ⚠️ O projeto não termina se o programa funciona. É preciso melhorá-lo, torná-lo modular e escalável, deixá-lo com fácil manutenção. Por isso, o SRP é tão importante.
 
-
+#
 ## Coesão
 
 As classes devem ter poucas instâncias de variáveis. Cada método da classe deve manipular uma ou mais dessas variáveis. Quanto mais variáveis um método manipular, mais coeso o método é para a classe. Uma classe onde cada variável é utilizada por um método é totalmente coesa. 
@@ -755,14 +779,14 @@ Porém, não é aconselhável e nem possível criar essas classes totalmente coe
 
 Ás vezes, quando tentamos manter as funções pequenas e listas de parâmetros curtas, acabamos criando muitas instâncias de variáveis que são usadas por vários métodos. É necessário sempre tentar separar as variáveis e os métodos em duas ou mais classes de modo que as novas classes sejam mais coesas.
 
-
+#
 ## Como organizar para alterar
 
 Em muitos sistemas, mudanças são constantes, e a cada alteração existe o risco de quebrar algo. Em um sistema limpo, organizamos as classes de modo a reduzir os riscos nas alterações. 
 
 > As classes devem ser abertas para expansão, mas fechadas para alteração.
 
-
+#
 ## Como isolar das alterações
 
 As necessidades mudam, e o código também. Em POO, há classes concretas, que detalham a implementação, e classes abstratas, que são apenas conceitos. Uma classe que depende de detalhes concretos corre perigo quando tais detalhes são modificados. Então, podemos oferecer interfaces e classes abstratas para isolar o impacto desses detalhes.
@@ -773,7 +797,7 @@ Então, o uso de interfaces e classes abstratas desacoplam o projeto, facilitand
 
 [⬆️Voltar ao Topo](#sumário)
 
-
+#
 # Sistemas
 
 A construção é um processo diferente de utilização. A lógica de negócio (uso) deve estar separada da lógica de montagem (construção) do sistema.
@@ -784,6 +808,7 @@ Muitos sistemas não fazem essa separação, o código de processo de inicializa
 
 Então, mais uma vez, é ideal que o código seja o mais modular possível. O processo de inicialização da construção e atribuição de um objeto não são exceções, também precisam ser modularizados. 
 
+#
 ## Separação do Main
 
 Uma maneira de separar a construção do uso e isolar todos os aspectos da construção no `main` ou em módulos chamados por ele, e seguir modelando o sistema assumindo que todos os objetos foram construídos e atribuídos adequadamente.
@@ -833,6 +858,7 @@ function buildUserService() {
 
 //lógica de construção
 ```
+#
 ## Factories
 
 Algumas vezes pode ser preciso passar o controle par o aplicativo quando um objeto for criado. Podemos usar o padrão de Factories para isso, mas mantendo os detalhes dessa construção separada do código do aplicativo.
@@ -847,6 +873,7 @@ Algumas vezes pode ser preciso passar o controle par o aplicativo quando um obje
 - Redução de acoplamento
 - Centralização da configuração
 
+#
 ## Injeção de dependência
 
 É uma boa maneira de separar construção do uso.
@@ -863,13 +890,39 @@ A DI torna o código:
 - Menos acoplado
 - Mais flexível
 
+#
 ## Desenvolvimento gradual
 
 Um sistema deve ser desenvolvido gradualmente, implementando apenas os fatos de hoje, e então refatorar e expandir o sistema, implementando novos fatos amanhã. Essa é a essência das agilidades iterativa e incremental.
 
 Porém, a estrutura de sistema requer um pré-planejamento, de toda forma. 
 
->ℹ️ Os sistemas de software são únicos, e suas arquiteturas podem crescer gradualmente se mantivermos uma separação devida de preocupações.
+>📝Os sistemas de software são únicos, e suas arquiteturas podem crescer gradualmente se mantivermos uma separação devida de preocupações.
 
+#
+## Testes na arquitetura do sistema
+
+Aqui é enfatizado a importância de testes automatizados na arquitetura do sistema e propõe que a testabilidade seja um critério de design natural.
+
+Uma boa arquitetura facilita os testes, pois permite que as regras de negócio sejam testadas isoladamente sem depender de Banco de Dados, Frameworks, etc. Isso significa que os testes podem ser rápidos, confiáveis e executados com frequência.
+
+Outro ponto importante é que o sistema deve ser projetado para que seja fácil de se realizar testes. Isso envolve:
+
+- Injeção de dependência
+- Separação de responsabilidades
+- Criação de interfaces
+
+Os testes podem ser uma força motivadora para a construção de uma boa arquitetura, pois se há uma preocupação em tornar o sistema fácil de testar, isso naturalmente leva a um código mais coeso, desacoplado e limpo.
+
+>⚠️ Projetar sistemas pensando nos testes **melhora automaticamente a arquitetura**.
+
+#
+## Otimize a tomada de decisões
+
+Modularidade e separação de preocupações descentralizam o gerenciamento e possibilitam a a tomada de decisões. Em um projeto grande, ninguém pode tomar todas as decisões. Então, é melhor designar essas decisões Às pessoas mais qualificadas.
+
+Muitas vezes é esquecido que, às vezes, é melhor adiar algumas decisões até o último momento. Isso permite uma tomada de decisão com a maior quantidade de informações possíveis, o que pode resultar numa decisão melhor.
+
+>ℹ️ Os sistemas devem ser limpos. Uma arquitetura invasiva afeta a agilidade e sobrepuja a lógica do domínio que, quando ofuscada, perde qualidade. Se a agilidade é comprometida, a produtividade também será.
 
 [⬆️Voltar ao Topo](#sumário)
