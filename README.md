@@ -12,6 +12,7 @@
 9. [Testes de unidade](#testes-de-unidade)
 10. [Classes](#classes)
 11. [Sistemas](#sistemas)
+12. [Emergência](#emergência)
 
 # Nomes Significativos
 
@@ -924,5 +925,45 @@ Modularidade e separação de preocupações descentralizam o gerenciamento e po
 Muitas vezes é esquecido que, às vezes, é melhor adiar algumas decisões até o último momento. Isso permite uma tomada de decisão com a maior quantidade de informações possíveis, o que pode resultar numa decisão melhor.
 
 >ℹ️ Os sistemas devem ser limpos. Uma arquitetura invasiva afeta a agilidade e sobrepuja a lógica do domínio que, quando ofuscada, perde qualidade. Se a agilidade é comprometida, a produtividade também será.
+
+[⬆️Voltar ao Topo](#sumário)
+
+# Emergência
+
+O capítulo aborda sobre as regras do método Projeto Simples, criado por Kent Beck. Ao seguir essas regras, podemos ter um projeto bom, escalável, com facilidade de aplicação de princípios e facilitando emergências.
+
+#
+## Obtendo clareza através de um processo de emergência
+
+De acordo com Kent Beck, um projeto é “simples” se seguir as seguintes regras:
+
+- Efetuar todos os testes;
+- Sem duplicação de código;
+- Expressar o propósito do programador;
+- Minimizar o número de classes e métodos.
+
+*As regras estão em ordem de relevância.*
+
+#
+## Regra 1: Efetue todos os testes
+
+É a base mínima para manter a integridade do sistema.
+
+>📝Criar testes leva a projetos melhores
+
+
+Um sistema que é testado detalhadamente e passa em todos os testes é um sistema passível de testes. Um sistema que não pode ser testado não pode ser verificado. Sendo assim, um sistema que não pode ser verificado, jamais deveria ser implementado.
+
+Ao tornar um sistema passível de teste, estamos nos direcionando a um projeto onde as classes sejam pequenas e de propósito único (olha o SRP aí de novo). Ou seja, Quanto mais testes são criados, mais seremos direcionados a coisas simples de serem testadas.
+
+#
+## Regras de 2 a 4: Refatoração
+
+É preciso manter o código e as classes limpas, então, refatoramos gradualmente o código. Para cada nova linha criada, paramos e refletimos sobre o projeto, se aquela linha prejudica o projeto. Se sim, é necessário encontrar outra forma de escrevê-la, uma forma limpa.
+
+Na fase de refatoração, podemos aplicar qualquer conceito de bom projeto de software: aumentar coesão, diminuir acoplamento, separar preocupações, etc. Também pode-se aplicar as últimas 3 regras de Projeto Simples: eliminar duplicação, garantir expressividade e minimizar o número de classes e métodos.
+
+#
+
 
 [⬆️Voltar ao Topo](#sumário)
