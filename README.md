@@ -964,6 +964,16 @@ Ao tornar um sistema passível de teste, estamos nos direcionando a um projeto o
 Na fase de refatoração, podemos aplicar qualquer conceito de bom projeto de software: aumentar coesão, diminuir acoplamento, separar preocupações, etc. Também pode-se aplicar as últimas 3 regras de Projeto Simples: eliminar duplicação, garantir expressividade e minimizar o número de classes e métodos.
 
 #
+## Sem repetição de código
+
+A repetição de código representa trabalho, risco e complexidade desnecessárias. A duplicação se apresenta de várias formas. Linhas de código semelhantes também são duplicações.
+
+#
+## Expressividade
+
+Um código expressivo é essencial para facilitar a manutenção futura por outros profissionais. Para isso, ele deve ser claro e autoexplicativo, permitindo que sua intenção seja compreendida sem dificuldades. Essa expressividade pode ser alcançada de diversas formas: escolhendo nomes significativos e intuitivos, adotando nomenclaturas padronizadas, escrevendo testes (como TDD) bem estruturados, entre outros.
+
+A maneira mais eficaz de garantir expressividade é dedicar atenção e cuidado ao que criamos. Isso significa investir tempo na construção de funções e classes, refinando-as para que sejam claras e eficientes. Cuidar do código é um recurso valioso que reflete qualidade e facilita o trabalho futuro.
 
 
 [⬆️Voltar ao Topo](#sumário)
