@@ -13,6 +13,7 @@
 10. [Classes](#classes)
 11. [Sistemas](#sistemas)
 12. [Emergência](#emergência)
+13. [Concorrência](#concorrência)
 
 # Nomes Significativos
 
@@ -975,5 +976,43 @@ Um código expressivo é essencial para facilitar a manutenção futura por outr
 
 A maneira mais eficaz de garantir expressividade é dedicar atenção e cuidado ao que criamos. Isso significa investir tempo na construção de funções e classes, refinando-as para que sejam claras e eficientes. Cuidar do código é um recurso valioso que reflete qualidade e facilita o trabalho futuro.
 
+
+[⬆️Voltar ao Topo](#sumário)
+
+# Concorrência
+
+Discorre sobre a necessidade de programação concorrente e suas dificuldades, como lidar com elas e deixar o código limpo.
+
+O objetivo do capítulo é explicar boas práticas e desafios para se ter um código limpo quando lidamos com execução simultânea de tarefas (várias partes do programa rodado ao mesmo tempo, por meio de threads).
+
+#
+
+## Por que concorrência?
+
+É uma estratégia de desacoplamento. Ajuda a separar o que é executado de quando é executado.
+
+Ao usar concurrency, temos alguns benefícios:
+
+- Melhora consideravelmente estruturas e transferências de dados (em casos específicos).
+- Permite melhor aproveitamento de CPUs.
+- Em sistemas com interface, evita travamentos durante tarefas demoradas.
+- Melhora compreensão do sistema.
+
+#
+## Mitos e conceitos equivocados
+
+Há motivos irrefutáveis para usar concorrência. Mas usar concorrência é difícil. Caso não tenha cuidado, situações prejudiciais podem ser criadas. Mitos e conceitos comuns relacionados a isso são:
+
+- *A concorrência sempre melhora o desempenho.*
+    
+    Pode ocorrer, mas só quando houver um tempo de espera muito grande que possa ser dividido entre múltiplas threads ou processadores.
+#
+- *O projeto não muda ao criar programas concorrentes.*
+    
+    O projeto de algoritmo concorrente pode ser diferente do projeto de sistema que possui apenas uma thread. O desacoplamento costuma ter grande impacto na estrutura do sistema.
+#
+- *Entender as questões de concorrência não é importante quando se trata de um container como da web ou EJB.*
+    
+    É melhor saber apenas o que o contêiner está fazendo e como protegê-lo das questões de atualização de concorrência e do deadlock descrito mais adiante.
 
 [⬆️Voltar ao Topo](#sumário)
