@@ -1015,4 +1015,35 @@ Há motivos irrefutáveis para usar concorrência. Mas usar concorrência é dif
     
     É melhor saber apenas o que o contêiner está fazendo e como protegê-lo das questões de atualização de concorrência e do deadlock descrito mais adiante.
 
+#
+## Desafios
+
+**Race Conditions** → múltiplas threads acessam um recurso compartilhado ao mesmo tempo, e pelo menos uma delas o modifica, tornando o comportamento imprevisível. Exemplo: threads incrementam um contador compartilhado sem sincronização:
+
+```php
+class Contador {
+	private int $valor = 0;
+	public function incrementar(): void {
+		$this->valor++;
+	}
+	
+	public function getValor(): int {
+		return $this->valor;
+	}
+}
+```
+
+>📝 Caso ambas as threads chamem `incrementar()` 10x cada, o resultado final pode ser menor que 20 por conta da falta de sincronização.
+
+
+**Dead Locks** → Acontece quando duas ou mais threads ficam bloqueadas, cada uma esperando um recurso que a outra detém. Exemplo clássico: Thread A trava Recurso X e espera por Y, enquanto Thread B trava Y e espera por X.
+
+**Starvation** → Uma thread nunca consegue executar porque outras threads monopolizam os recursos.
+
+**Complexidade de Depuração** → Bugs concorrentes são **não-determinísticos**, ou seja, dependem da ordem de execução das threads, dificultando sua reprodução.
+
+**Sobrecarga de Sincronização** → Mecanismos como locks podem reduzir o desempenho se usados de forma excessiva ou incorreta.
+
+Martin enfatiza que esses problemas não são inevitáveis, mas exigem **disciplina** e **boas práticas** para serem mitigados.
+
 [⬆️Voltar ao Topo](#sumário)
