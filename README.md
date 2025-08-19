@@ -1046,4 +1046,37 @@ class Contador {
 
 Martin enfatiza que esses problemas não são inevitáveis, mas exigem **disciplina** e **boas práticas** para serem mitigados.
 
+## Princípios para proteção da concorrência
+
+Aqui segue-se uma série de técnicas para proteger seus sitemas dos problemas de código concorrente.
+
+### Responsabilidade única
+
+Estamos carecas de saber que a responsabilidade única define que um módulo/classe/componente deve ter apenas uma razão para mudar. Alguns pontos a serem levados em consideração sobre esse tipo de código:
+
+- Possui seu próprio ciclo de desenvolvimento, alteração e otimização.
+- Possui seus prórpios desafios, que são diferentes e mais difíceis do que o código não voltado a concorrência.
+- Existe um número de maneiras em que esse código pode ser escrito de forma errada o bastante, sem contar o peso do código de aplcação que o cerca.
+
+### Solução: limite de escopo dos dados
+
+Para evitar que 2 threads interfiram uma na outra (conforme descrito em ), pode-se usar a palavra reservada `synchronized`  para proteger a parte crítica do código qque use aquele objeto compartilhado. 
+
+Mas é importante restringir a quantidade dessas partes “reservadas”, pois podem ocorrer situações como:
+
+- esquecer de proteger alguns lugares
+- haver esforço extra para garantir que tudo esteja protegido, etc.
+
+>⚠️Leve a sério o encapsulamento de dados; limite severamente o acesso a dados que possam ser compartilhados.
+
+### Solução: use cópias dos dados
+
+Em alguns casos pode-se fazer cópias dos objetos e deixá-los somente como leitura. Ou, fazer cópias dos objetos, colocar os resultadis de múltiplas threads naquelas cópias e unir os resultados numa thread só.
+
+### Solução:  as threads devem ser as mais independentes possíveis
+
+Considere criar um código onde cada thread exista em seu próprio mundo, onde cada uma faz suas tarefas sem depender totalmente de outra. 
+
+>⚠️Tente dividir os dados em subsistemas independentes que possam ser manipulados por threads independentes, possivelmente em processadores independentes.
+
 [⬆️Voltar ao Topo](#sumário)
