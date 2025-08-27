@@ -1080,4 +1080,63 @@ Considere criar um código onde cada thread exista em seu próprio mundo, onde c
 
 >⚠️Tente dividir os dados em subsistemas independentes que possam ser manipulados por threads independentes, possivelmente em processadores independentes.
 
+## Conheça seus métodos de execução
+
+Quando se utiliza concorrência, é super importante conhecer o que os métodos do projeto fazem com relação a compartilhamento de dados, sincronização e estado. 
+
+Entender o que cada método acessa e modifica → se o método acess variáveis compartilhadas; 
+
+Identificar os métodos thread-safe e thread-unsafe
+
+- Thread-safe: pode rodar em paralelo sem problemas.
+- Thread-unsafe: precisa de sincronização.
+
+Ao entender bem sobre o comportamento dos métodos em abiente concorrente, menor é a chance de encontrar problemas.
+
+>⚠️ Saiba exatamente *o que ele acessa, o que ele altera, se ele depende de estado mutável e se já tem alguma proteção de sincronização embutida.*
+
+Alguns conceitos importantes:
+
+Bound resources → recursos de tamanho fixo usado em ambiente concorrente.
+
+Mutual exclusion → apenas uma thread de cada vez pode acessar aquele recurso compartilhado.
+
+Starvation → uma thread ou grupo não pode prosseguir por um tempo longo ou indefinido.
+
+Deadlock → duas ou mais threads esperam que a outra termine. Cada uma tem um recurso que a outra precisa e nenhuma delas consegue prosseguir até obter esse recurso.
+
+Livelock → threads em entrave, tnetam realizar seu trabalho mas há outra thread no caminho.
+
+Há muitos modelos de execução de programação concorrente, segue explicação de 2 deles:
+
+### Producer-Consumer
+
+Uma thread producer cria uma tarefa e coloca em uma fila de espera. Uma thread consumer pega a tarefa da fila e a finaliza. Essa fila de espera é um bound resource. Ou seja, as producers devem esperar ter um espaço livre na fila para adicionar tarefas e as consumers precisam que tenha algo na fila para ser recuperado.
+
+Essa coordenação entre a trheads requer comunicação, sinais entre elas. Ambas precisam de sinalização para poderem continuar. Para isso, pode-se usar locks, semáforos ou monitores para sincronizar.
+
+Onde aparece: filas de mensagens, pipelines de dados, etc.
+
+### Dining Philosophers
+
+5 filósofos sentados numa mesa redonda, cada um com um prato e um garfo à esquerda e à direita. Para comer, precisa pegar os **2 garfos**.
+
+**Problema:** se todos pegarem o garfo da esquerda ao mesmo tempo → ninguém consegue pegar o da direita → **deadlock**. 
+
+**Outro risco:** alguns filósofos podem ficar sem nunca conseguir comer (**starvation**).
+
+>ℹ️ Filósofo = thread; Garfo = recurso
+
+Soluções:
+
+- Restringir quem pode pegar os garfos ao mesmo tempo (ex: só 4 filósofos tentam comer).
+- Impor ordem na coleta dos garfos (sempre pegar o menor id primeiro, depois o maior).
+- Usar um “garçom” que autoriza quando um filósofo pode comer.
+
+### Dependências entre métodos sincronizados
+
+Podem causar bugs. Se houver mais de um método sincronizado na mesma classe compartilhada, então o sistema foi escrito incorretamente.
+
+>⚠️ Evite usar mais de um método em um objeto compartilhado.
+
 [⬆️Voltar ao Topo](#sumário)
