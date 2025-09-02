@@ -1139,4 +1139,20 @@ Podem causar bugs. Se houver mais de um método sincronizado na mesma classe com
 
 >⚠️ Evite usar mais de um método em um objeto compartilhado.
 
+### Mantenha pequenas as seções sincronizadas
+
+Com o uso da palavra reservada synchronized, ocorre um bloqueio. Todas as seções protegidas pelo mesmo bloqueio garante que há apenas uma thread em execução para todas elas num dado momento. 
+
+Mas esses bloqueios causam atrasos e criam trabalhos extra. Porém, seções críticas precisam ser protegidas, então a orientação é: o código deve ter o menor número possível de seções críticas.
+
+>ℹ️ Mantenha as seções sincronizadas as menores possíveis.
+
+### É difícil criar códigos de desligamento corretos
+
+Há uma complexidade de garantir que um programa encerre suas operações de forma segura e organizada. Código de desligamento é aquele responsável por liberar recursos, fechar arquivos, encerrar conexões de rede ou banco de dados e salvar dados importantes antes do sistema terminar. 
+
+Apesar de parecer simples, escrever esse código corretamente é difícil, porque é preciso lidar com **erros que podem ocorrer durante o próprio desligamento**, como falhas ao fechar arquivos ou salvar dados, além de garantir que a ordem de encerramento das dependências esteja correta — fechar algo antes do outro pode gerar falhas. 
+
+O desligamento deve ser tratado de forma **separada e organizada**, com tratamento de exceções adequado e testes que simulem falhas, para minimizar perdas de dados e recursos presos.
+
 [⬆️Voltar ao Topo](#sumário)
