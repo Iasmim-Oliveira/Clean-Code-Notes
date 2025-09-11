@@ -1155,4 +1155,45 @@ Apesar de parecer simples, escrever esse código corretamente é difícil, porqu
 
 O desligamento deve ser tratado de forma **separada e organizada**, com tratamento de exceções adequado e testes que simulem falhas, para minimizar perdas de dados e recursos presos.
 
+## Teste de código com threads
+
+é impossível considerar que o código está correto. Testes não garantem que estão corretos, mas eles mnimizam riscos. Isso também é válido para uma solução com thread única. Enquanto houver duas ou mais threads usando o mesmo código e trabalhando com os mesmos dados compartilhados, as coisas ficam mais complexas.
+
+>⚠️ Crie testes que consigam expor os problemas e os execute frequentemente. Se o teste falhar, rastreie a falha.
+
+
+Algumas recomendações:
+
+### Trate falhas falsas como questões relacionadas as threads
+
+O código que usa threads causam falhas em coisas que “simplesmente não pode falhar”. Geralmente, essas falhas são consideradas casos isolados, já que não se encontra a causa. É melhor assumir que não existem casos isolados, pois sendo esses casos ignorados, o código será construído numa abordagem possivelmente falha. 
+
+### Faça com que o código funcione sem thread
+
+Geralmente isso significa criar DTOs ou uma classe simples, que são chamados pelas threads. Esses POJOs não enxergam as threads, portanto podem ser testados fora do ambiente com threads. 
+
+```php
+<?php
+
+class UsuarioDTO {
+    public string $nome;
+    public string $email;
+    public int $idade;
+
+    public function __construct(string $nome, string $email, int $idade) {
+        $this->nome = $nome;
+        $this->email = $email;
+        $this->idade = $idade;
+    }
+}
+```
+
+### Torne o código com threads plugável
+
+Crie um código que suporte concorrência de modo que possa ser executado em várias configurações:
+
+- Uma thread, várias trheads, variações conforme a configuração.
+- O código interage com algo que possa ser tanto real quanto artificial.
+- Execute com objetos artificiais que executem de forma rápida, lenta e variável.
+
 [⬆️Voltar ao Topo](#sumário)
