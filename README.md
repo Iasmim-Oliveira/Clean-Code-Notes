@@ -1196,4 +1196,16 @@ Crie um código que suporte concorrência de modo que possa ser executado em vá
 - O código interage com algo que possa ser tanto real quanto artificial.
 - Execute com objetos artificiais que executem de forma rápida, lenta e variável.
 
+### Torne o código com threads ajustável
+
+Isto requer testes e erros. Assim que possível, devemos encontrar maneiras de cronometrar o desempenho de seu sistema sob diferentes configurações. Faça com que: seja possível ajustar o número de threads, permitir alteração enquanto o sistema estiver em execução, permita auto-ajuste, etc.
+
+### Execute com mais threads que processadores
+
+Para incentivar o swapping de tarefas, execute mais threads do que processadores presentes. Quando mais frequente é a troca de tarefas, mais provavelmente será descobertas partes do código que precisam de seção crítica ou que causam deadlocks.
+
+### Execute em diferentes plataformas
+
+Execute o quanto antes e frequentemente seu código com threads em todas as plataformas finais. Sistemas operacionais diferentes tem diferentes políticas de tratamento de threads. É ideal testar em um provável ambiente de implantação.
+
 [⬆️Voltar ao Topo](#sumário)
